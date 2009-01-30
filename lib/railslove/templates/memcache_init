@@ -1,0 +1,31 @@
+#!/bin/sh
+# /etc/init.d/memcached
+#
+
+set -e
+
+DAEMON=/usr/local/bin/memcached
+PIDFILE=/var/run/memcached/memcached.pid
+NAME=memcached
+
+test -x ${DAEMON} || exit 0
+
+case "$1" in
+start)
+echo -n "Starting ${NAME}" 
+start-stop-daemon --start --pidfile ${PIDFILE} --exec ${DAEMON} -- -d -P ${PIDFILE} -u memcached -l 127.0.0.1
+echo "." 
+;;
+stop)
+echo -n "Stopping ${NAME}" 
+start-stop-daemon --stop --pidfile ${PIDFILE} --oknodo --exec ${DAEMON}
+rm -f ${PIDFILE}
+echo "." 
+;;
+*)
+echo "Usage: /etc/init.d/${NAME} {start|stop}" 
+exit 1
+;;
+esac
+
+exit 0

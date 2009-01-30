@@ -1,0 +1,4 @@
+* learn how to test capistrano tasks ans sprinkle packages
+
+SPRINKLE
+* Don't fail if memcache user already exists 

@@ -1,0 +1,11 @@
+require "fileutils"
+folder = ARGV.first || "."
+
+`capify #{folder}`
+FileUtils.mkdir_p("#{folder}/config/god")
+FileUtils.mkdir_p("#{folder}/config/server")
+FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/vhost.conf", "#{folder}/config/server/vhost.conf")
+FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle.rb", "#{folder}/config/server/setup.rb")
+FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/deploy.rb", "#{folder}/config/deploy.rb")
+
+puts "[DONE]"
