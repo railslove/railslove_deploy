@@ -1,10 +1,21 @@
 require "railslove/recipes"
 
 set :application, ""
+set :domain, ""
+set :domain_alias, ""
 set :repository, ""
 set :scm, "git"
-set :deploy_via, :remote_cache
 set :branch, "master"
+
+set :ssh_options, {:forward_agent => true}
+on :start do
+    `ssh-add`
+end
+set :deploy_via, :remote_cache
+
+default_run_options[:pty] = true
+ssh_options[:port] = 22
+
 
 set :user, "rails"
 
@@ -12,8 +23,6 @@ set :user, "rails"
 set :shared_files, []
 set :backup_dir, "/backups"
 
-default_run_options[:pty] = true
-ssh_options[:port] = 22
 
 set :deploy_to, "/var/www"
 
@@ -31,9 +40,7 @@ set :memcache_port, 11211
 set :memcache_memory, 256
 
 
-after "deploy:_csetup",
-  "db:create",
-  "shared:setup",
+after "deploy:setup",
   "logrotation:configure",
   "apache:upload_vhost_config",
   "apache:enable_site",
@@ -43,3 +50,4 @@ after "deploy:_csetup",
 after "deploy:update",
   "shared:symlink",
   "deploy:cleanup"
+

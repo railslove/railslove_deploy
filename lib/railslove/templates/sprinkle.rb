@@ -12,8 +12,8 @@ policy :passenger_stack, :roles => :app do
   requires :appserver
   requires :database_driver
   requires :usefull_gems
-  requires :ssh #configure and harden ssh
-  requires :iptable #configure and harden iptables only HTTP 443+80 and SSH is allowed
+  configures :ssh
+  configures :iptables
 end
 
 deployment do

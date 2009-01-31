@@ -1,20 +1,18 @@
 package :memcached_daemon, :provides => :memcached do
   description 'Memcached, a distributed memory object store'
-  source 'http://danga.com/memcached/dist/memcached-1.2.6.tar.gz' do
+  source 'http://danga.com/memcached/dist/memcached-1.2.6.tar.gz'
 
-    config do 
-      put "/etc/init.d/memcached", open("#{File.dirname(__FILE__)}/../templates/memcache_init").read, :mode => 0755
-    end
+  config do 
+    pre :config, "groupadd -f memcached"
+    pre :config, "useradd -g memcached -s /bin/false -d /dev/null memcached"
+    pre :config, "mkdir /var/run/memcached"
+    pre :config, "chown memcached:memcached /var/run/memcached"
+
+    put "/etc/init.d/memcached", open("#{File.dirname(__FILE__)}/../templates/memcache_init").read, :mode => 0755
     
-    post :install, "groupadd -f memcached"
-    post :install, "useradd -g memcached -s /bin/false -d /dev/null memcached"
-    post :install, "mkdir /var/run/memcached"
-    post :install, "chown memcached:memcached /var/run/memcached"
-
-    post :install, 'update-rc.d memcached defaults'
-  
-    post :install, '/etc/init.d/memcached start'
-  
+    post :config, 'update-rc.d memcached defaults'
+    post :config, '/etc/init.d/memcached start'
+    
   end
   
   verify do

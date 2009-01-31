@@ -1,10 +1,12 @@
+require 'net/http'
 package :ruby_enterprise, :provides => :ruby do
   description 'Ruby Enterprise Edition'
-  version '1.8.6-20090113'
   
+  source_url = Net::HTTP.get( 'www.rubyenterpriseedition.com', '/download.html' ).scan(/http:.*\.tar\.gz/).first
+  version "#{ruby_enterprise_url[/(ruby-enterprise.*)(.tar.gz)/, 1]}"
   install_path = "/usr/local/ruby-enterprise"
   
-  source "http://rubyforge.org/frs/download.php/50087/ruby-enterprise-#{version}.tar.gz" do
+  source source_url do
     custom_install 'echo -en "\n/usr/local/ruby-enterprise\n" | sudo ./installer'
     
     ["","#Adding rubyenterprise as path",
