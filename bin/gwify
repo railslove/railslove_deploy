@@ -4,6 +4,7 @@ folder = ARGV.first || "."
 `capify #{folder}`
 
 FileUtils.mkdir_p("#{folder}/config/god")
+FileUtils.mkdir_p("#{folder}/config/deploy")
 
 FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/vhost.erb", "#{folder}/config/vhost.erb")
 FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle.rb", "#{folder}/config/stack.rb")
