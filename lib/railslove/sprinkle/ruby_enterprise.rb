@@ -3,7 +3,7 @@ package :ruby_enterprise, :provides => :ruby do
   description 'Ruby Enterprise Edition'
   
   source_url = Net::HTTP.get( 'www.rubyenterpriseedition.com', '/download.html' ).scan(/http:.*\.tar\.gz/).first
-  version "#{ruby_enterprise_url[/(ruby-enterprise.*)(.tar.gz)/, 1]}"
+  version "#{source_url[/(ruby-enterprise.*)(.tar.gz)/, 1]}"
   install_path = "/usr/local/ruby-enterprise"
   
   source source_url do
