@@ -1,3 +1,9 @@
+# uncomment that if you want to deploy to several stages and want to use the capistrano multistage extensions
+# if so, you should also create a custom stage deploy script i.e. config/deploy/staging.rb
+# set :stages, %w(staging production)
+# set :default_stage, "staging"
+# require 'capistrano/ext/multistage'
+#
 require "railslove/recipes"
 
 set :application, ""
