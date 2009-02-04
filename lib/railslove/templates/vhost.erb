@@ -4,6 +4,7 @@
 	DocumentRoot /var/www/apps/<%= domain %>/current/public
 
 	<directory "/var/www/apps/<%= domain %>/current/public">
+		Options FollowSymLinks
 		Order allow,deny
 		Allow from all
 	</directory>
@@ -11,4 +12,16 @@
 	LogLevel warn
   ErrorLog /var/www/apps/<%= domain %>/logs/error.log
   CustomLog /var/www/apps/<%= domain %>/logs/access.log combined
+
+
+ 	# Gzip/Deflate
+	# http://fluxura.com/2006/5/19/apache-for-static-and-mongrel-for-rails-with-mod_deflate-and-capistrano-support
+	AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript text/css application/x-javascript
+	BrowserMatch ^Mozilla/4 gzip-only-text/html
+	BrowserMatch ^Mozilla/4\.0[678] no-gzip
+	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteRule ^.*$ /system/maintenance.html [L]
 </VirtualHost>
