@@ -7,7 +7,6 @@ set :repository, ""
 set :scm, "git"
 set :branch, "master"
 
-set :ssh_options, {:forward_agent => true}
 on :start do
     `ssh-add`
 end
@@ -15,6 +14,7 @@ set :deploy_via, :remote_cache
 
 default_run_options[:pty] = true
 ssh_options[:port] = 22
+ssh_options[:forward_agent] = true
 
 
 set :user, "rails"
