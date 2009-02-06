@@ -7,7 +7,8 @@ FileUtils.mkdir_p("#{folder}/config/god")
 FileUtils.mkdir_p("#{folder}/config/deploy")
 
 FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/vhost.erb", "#{folder}/config/vhost.erb")
-FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle.rb", "#{folder}/config/stack.rb")
+FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle.rb", "#{folder}/config/server/policy.rb")
+FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle_config.rb", "#{folder}/config/server/config.rb")
 FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/deploy.rb", "#{folder}/config/deploy.rb")
 
 puts "[Deployment files created]"

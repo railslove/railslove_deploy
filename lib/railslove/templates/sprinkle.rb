@@ -22,7 +22,8 @@ deployment do
     begin
       recipes 'Capfile'
     rescue LoadError
-      recipes 'deploy'
+      recipes 'config/deploy'
+      recipes 'config/server/config.rb'
     end
   end
  
