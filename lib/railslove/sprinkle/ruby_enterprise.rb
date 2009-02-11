@@ -7,7 +7,7 @@ package :ruby_enterprise, :provides => :ruby do
   install_path = "/usr/local/ruby-enterprise"
   
   source source_url do
-    custom_install 'echo -en "\n/usr/local/ruby-enterprise\n" | sudo ./installer'
+    custom_install 'sudo ./installer --auto=/usr/local/ruby-enterprise'
     
     ["","#Adding rubyenterprise as path",
     "PATH=$PATH:#{install_path}/bin",
