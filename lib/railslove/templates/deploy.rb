@@ -22,19 +22,24 @@ default_run_options[:pty] = true
 ssh_options[:port] = 22
 ssh_options[:forward_agent] = true
 
-
 set :user, "rails"
 
 
-set :shared_files, []
-set :backup_dir, "/backups"
+role :app, ""
+role :web, ""
+role :db,  "", :primary => true
 
 
-set :deploy_to, "/var/www"
+
+set :deploy_to, "/var/www/#{application}"
 
 set :log_directory, "#{shared_path}/system/logs"
 set :log_size, "150M"
 set :log_rotate, "15"
+
+set :shared_files, []
+set :backup_dir, "/backups"
+
 
 
 set :twitter_user, "myappname"
