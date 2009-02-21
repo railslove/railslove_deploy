@@ -1,17 +1,17 @@
 <VirtualHost <%= domain %>:80>
 	ServerName <%= domain %>
 	ServerAlias <%= domain_alias %>
-	DocumentRoot /var/www/apps/<%= domain %>/current/public
+	DocumentRoot /var/www/<%= domain %>/current/public
 
-	<directory "/var/www/apps/<%= domain %>/current/public">
+	<directory "/var/www/<%= domain %>/current/public">
 		Options FollowSymLinks
 		Order allow,deny
 		Allow from all
 	</directory>
 	
 	LogLevel warn
-  ErrorLog /var/www/apps/<%= domain %>/logs/error.log
-  CustomLog /var/www/apps/<%= domain %>/logs/access.log combined
+  ErrorLog /var/www/<%= domain %>/logs/error.log
+  CustomLog /var/www/<%= domain %>/logs/access.log combined
 
 
  	# Gzip/Deflate
