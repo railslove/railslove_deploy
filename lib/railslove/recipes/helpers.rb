@@ -1,10 +1,15 @@
 # run a rake task
 def rake(task)
   rails_env = fetch(:rails_env, "production")
+  rake_env = fetch(:rake_env, "")
   rake = fetch(:rake, "rake")
+  directory = current_release 
   run "sh -c 'cd #{directory}; #{rake} #{task} RAILS_ENV=#{rails_env} #{rake_env}'"
 end
 
+def render(template,bind=binding)
+  ERB.new(open(template).read).result(bind) 
+end
 
 # THANKS: http://dev.animoto.com/articles/capistrano-gem-management
 # =========== 
