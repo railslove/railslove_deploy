@@ -38,7 +38,7 @@ namespace :gems do
     results = []
     with_gem_dependencies do |dep, gem, version|
       unless dep.pass?
-        run "gem install --no-ri --no-rdoc #{"--version '#{version}' " if version}#{gem}"
+        sudo "gem install --no-ri --no-rdoc #{"--version '#{version}' " if version}#{gem}"
         results << "Successfully installed #{gem} #{version}"
       end
     end
