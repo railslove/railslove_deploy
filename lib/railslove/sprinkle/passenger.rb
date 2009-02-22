@@ -21,9 +21,18 @@ package :passenger, :provides => :appserver do
   config do 
     pre :install, "groupadd -f rails"
     pre :install, "useradd -g rails -m rails"
-    run 'echo "" && echo "-----------------------------------" && echo "PLEASE SET A PASSWORD FOR THE NEW RAILS USER:" && passwd rails'
+    # seems a bit hackish here
+    new_password = ""
+    password_confirmation = "!"
+    while new_password != password_confirmation
+      new_password = enter("Enter a new password for the rails user: ")
+      password_confirmation = enter("Confirm password: ")
+    end
+    
+    run "echo 'rails:#{new_password}' | chpasswd"
     post :install, 'mkdir /var/www/apps'
     post :install, 'chown rails:rails /var/www/apps'
+    post :install, "cp /root/.gemrc /home/rails/.gemrc"
   end
   
   
