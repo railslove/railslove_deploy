@@ -23,8 +23,8 @@ deployment do
       recipes 'Capfile'
     rescue LoadError
       recipes 'config/deploy'
-      recipes 'config/server/config.rb'
     end
+    recipes 'config/server/config.rb'
   end
  
   # source based package installer defaults

@@ -52,13 +52,16 @@ set :memcache_memory, 256
 
 
 after "deploy:setup",
-  "logrotation:configure",
+  "logrotate:configure",
   "apache:upload_vhost_config",
+  "gems:install"
+  
+after "deploy:cold",
   "apache:enable_site",
   "apache:reload"
 
-
-after "deploy:update",
+after "deploy:finalize_update",
+  "db:upload_config_yml",
+  "db:create",
   "shared:symlink",
   "deploy:cleanup"
-
