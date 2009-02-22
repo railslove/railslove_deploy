@@ -39,7 +39,7 @@ namespace :apache do
 
   desc "Upload Apache virtual host"
   task :upload_vhost_config, :roles => :web do
-    put render("config/server/vhost.conf", binding), application
+    put render("config/server/vhost.erb", binding), application
     sudo "mv #{application} /etc/apache2/sites-available/#{application}"
   end
 end
