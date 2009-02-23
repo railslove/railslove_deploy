@@ -1,9 +1,9 @@
 # run a rake task
-def rake(task)
-  rails_env = fetch(:rails_env, "production")
-  rake_env = fetch(:rake_env, "")
+def rake(task, args={})
+  rails_env = args[:rails_env] || fetch(:rails_env, "production")
+  rake_env = args[:rake_env] || fetch(:rake_env, "")
   rake = fetch(:rake, "rake")
-  directory = current_release 
+  directory = args[:directory] || release_path
   run "sh -c 'cd #{directory}; #{rake} #{task} RAILS_ENV=#{rails_env} #{rake_env}'"
 end
 
