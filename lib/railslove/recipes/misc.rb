@@ -12,7 +12,7 @@ task :ssh do
       end 
       puts server.host
       
-      system("ssh #{user}@#{server.host} -p #{ssh_port}")
+      system("ssh #{user}@#{server.host} -p #{ssh_options[:port]}")
       don_ips << server.host
       sleep 1
     end
@@ -27,7 +27,7 @@ task :ssh do
           next
         end 
         puts server.host
-        system("ssh #{user}@#{server.host} -p #{ssh_port}")
+        system("ssh #{user}@#{server.host} -p #{ssh_options[:port]}")
         don_ips << server.host
         sleep 1
       end
