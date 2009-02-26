@@ -4,4 +4,8 @@ namespace :shared do
     
   end
   
+  task :symlink do 
+    
+  end
+  
 end
