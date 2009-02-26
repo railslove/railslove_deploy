@@ -30,7 +30,10 @@ namespace :db do
     put open("config/database.yml").read, "#{shared_path}/database.yml"
     run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
   end
-  
+  desc "Symlink database.yml to shared path"
+  task :symlink_config_yml, :roles => :db do
+    run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+  end
   
   desc "create a backup of the mysql database save it to shared/backups/database and download it to /backups"
   task :backup, :roles => :db, :only => { :primary => true } do 
