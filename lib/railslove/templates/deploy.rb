@@ -45,6 +45,7 @@ set :backup_dir, "/backups"
 after "deploy:setup",
   "logrotate:configure",
   "apache:upload_vhost_config",
+  "db:upload_config_yml",
   "gems:install"
   
 after "deploy:cold",
