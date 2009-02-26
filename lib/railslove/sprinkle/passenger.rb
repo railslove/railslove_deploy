@@ -11,7 +11,7 @@ package :passenger, :provides => :appserver do
     
     # enable passenger module
     post :install, "sudo a2enmod passenger"
-    
+    post :install, 'echo "NameVirtualHost *:80" | sudo tee -a /etc/apache2/httpd.conf'
     # Restart apache to note changes
     post :install, '/etc/init.d/apache2 restart'
 

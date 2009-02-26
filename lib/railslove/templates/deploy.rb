@@ -23,7 +23,7 @@ ssh_options[:port] = 22
 ssh_options[:forward_agent] = true
 
 set :user, "rails"
-
+set :use_sudo, false
 
 role :app, ""
 role :web, ""
@@ -40,15 +40,6 @@ set :log_rotate, "15"
 set :shared_files, []
 set :backup_dir, "/backups"
 
-
-
-set :twitter_user, "myappname"
-set :twitter_password, "password"
-after "deploy", "hooks:twitter:update"
-
-set :memcache_ip, '127.0.0.1'
-set :memcache_port, 11211
-set :memcache_memory, 256
 
 
 after "deploy:setup",
