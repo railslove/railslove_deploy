@@ -53,7 +53,7 @@ after "deploy:cold",
   "apache:reload"
 
 after "deploy:finalize_update",
-  "db:upload_config_yml",
+  "db:symlink_config_yml",
   "db:create",
   "shared:symlink",
   "deploy:cleanup"
