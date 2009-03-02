@@ -8,12 +8,16 @@
 		Order allow,deny
 		Allow from all
 	</directory>
-	
+	RailsEnv <%= fetch(:rails_env, "production") %>
 	LogLevel warn
   ErrorLog /var/www/<%= application %>/shared/log/error.log
   CustomLog /var/www/<%= application %>/shared/log/access.log combined
 
-
+  #set far future expire date for static files
+  #<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+  #    Header set Expires "Fri, 2 Mar 2012 22:00:00 GMT"
+  #</FilesMatch>
+  
  	# Gzip/Deflate
 	# http://fluxura.com/2006/5/19/apache-for-static-and-mongrel-for-rails-with-mod_deflate-and-capistrano-support
 	AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript text/css application/x-javascript
@@ -21,6 +25,8 @@
 	BrowserMatch ^Mozilla/4\.0[678] no-gzip
 	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
 
+  RewriteEngine On 
+  
   RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
   RewriteCond %{SCRIPT_FILENAME} !maintenance.html
   RewriteRule ^.*$ /system/maintenance.html [L]
