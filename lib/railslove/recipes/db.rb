@@ -28,7 +28,6 @@ namespace :db do
   desc "Upload the database yml from the /config/database.yml"
   task :upload_config_yml, :roles => :db do
     put open("config/database.yml").read, "#{shared_path}/database.yml"
-    run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
   end
   desc "Symlink database.yml to shared path"
   task :symlink_config_yml, :roles => :db do
