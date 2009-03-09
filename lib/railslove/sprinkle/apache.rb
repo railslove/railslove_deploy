@@ -4,6 +4,7 @@ package :apache, :provides => :webserver do
     post :install, 'a2enmod rewrite'
     post :install, 'a2enmod deflate'
     post :install, 'a2enmod expires'
+    post :install, 'a2enmod headers'
   end
   
   verify do
