@@ -1,16 +1,16 @@
 namespace :memcache do 
   
-  desc "start Memcache"
+  desc "Start Memcached"
   task :start do
     sudo "memcached -d -m #{memcache_memory} -l #{memcache_ip} -p #{memcache_port}"
   end
   
-  desc "stop Memcache"
+  desc "Stop Memcached using killall"
   task :stop do
     sudo "killall memcached"
   end
   
-  desc "restart Memcache"
+  desc "Restart Memcached"
   task :restart do 
     stop
     start
