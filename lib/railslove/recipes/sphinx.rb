@@ -1,4 +1,4 @@
-namespace :sphinx do
+namespace :thinking_sphinx do
   
   desc "Configure Thinkig Sphinx"
   task :config, :roles => :app do 
