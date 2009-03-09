@@ -21,6 +21,6 @@ end
 namespace :starling do
   desc "Start Starling"
   task :start do
-    run "starling -d -p #{fetch(:rails_env, "15151")}"
+    run "sudo starling -d -p #{fetch(:starling_port, "15151")}"
   end
 end
