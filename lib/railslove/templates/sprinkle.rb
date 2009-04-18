@@ -12,8 +12,6 @@ policy :passenger_stack, :roles => :app do
   requires :appserver
   requires :database_driver
   requires :usefull_gems
-  configures :ssh
-  configures :iptables
 end
 
 deployment do
