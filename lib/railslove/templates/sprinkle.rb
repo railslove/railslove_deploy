@@ -10,6 +10,7 @@ policy :passenger_stack, :roles => :app do
   requires :ruby
   requires :searchengine
   requires :appserver
+  requires :rails_user
   requires :database_driver
   requires :usefull_gems
 end
