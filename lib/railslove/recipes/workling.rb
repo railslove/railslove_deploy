@@ -13,7 +13,7 @@ namespace :workling do
   
   desc "Stop Workling Client"
   task :stop, :roles => :app do 
-    run "cd #{current_path}; RAILS_ENV=#{fetch(:rails_env, "production")} script/workling_client stop"
+    run "cd #{current_path}; RAILS_ENV=#{fetch(:rails_env, "production")} script/workling_client stop; echo 0"
   end
   
 end

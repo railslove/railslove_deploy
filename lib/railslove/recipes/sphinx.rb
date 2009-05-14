@@ -12,7 +12,7 @@ namespace :thinking_sphinx do
   
   desc "Stop Thinkig Sphinx"
   task :stop, :roles => :app do 
-    run "cd #{current_path}; rake ts:stop RAILS_ENV=#{fetch(:rails_env, "production")}"
+    run "cd #{current_path}; rake ts:stop RAILS_ENV=#{fetch(:rails_env, "production")};echo 0"
   end
   
   desc "Run Thinkig Sphinx indexing"

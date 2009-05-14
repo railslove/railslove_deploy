@@ -7,7 +7,7 @@ namespace :memcache do
   
   desc "Stop Memcached using killall"
   task :stop do
-    sudo "killall memcached"
+    sudo "killall memcached; echo 0"
   end
   
   desc "Restart Memcached"

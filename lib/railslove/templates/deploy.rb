@@ -31,7 +31,7 @@ role :db,  "", :primary => true
 
 
 
-set :deploy_to, "/var/www/#{application}"
+set :deploy_to, "/var/www/rails_apps/#{application}"
 
 set :log_directory, "#{shared_path}/system/logs"
 set :log_size, "150M"
