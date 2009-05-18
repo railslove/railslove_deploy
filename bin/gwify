@@ -1,16 +1,21 @@
 #!/usr/bin/env ruby
-require "fileutils"
-folder = ARGV.first || "."
+if ARGV.first == "install"
+  require "#{File.dirname(__FILE__)}/../lib/railslove/vendor/sprinkle/lib/sprinkle"
+  Sprinkle::Script.sprinkle File.read("config/server/policy.rb"), "config/server/policy.rb"
+else
+  require "fileutils"
+  folder = "."
 
-`capify #{folder}`
+  `capify #{folder}`
 
-FileUtils.mkdir_p("#{folder}/config/god")
-FileUtils.mkdir_p("#{folder}/config/deploy")
-FileUtils.mkdir_p("#{folder}/config/server")
+  FileUtils.mkdir_p("#{folder}/config/god")
+  FileUtils.mkdir_p("#{folder}/config/deploy")
+  FileUtils.mkdir_p("#{folder}/config/server")
 
-FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/vhost.erb", "#{folder}/config/server/vhost.erb")
-FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle.rb", "#{folder}/config/server/policy.rb")
-FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle_config.rb", "#{folder}/config/server/config.rb")
-FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/deploy.rb", "#{folder}/config/deploy.rb")
+  FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/vhost.erb", "#{folder}/config/server/vhost.erb")
+  FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle.rb", "#{folder}/config/server/policy.rb")
+  FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle_config.rb", "#{folder}/config/server/config.rb")
+  FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/deploy.rb", "#{folder}/config/deploy.rb")
 
-puts "[Deployment files created]"
+  puts "[Deployment files created]"
+end
