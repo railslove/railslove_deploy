@@ -1,7 +1,7 @@
 namespace :passenger do
   
   desc "Restart Passenger"
-  task :restart, :roles => :web do
+  task :restart, :roles => :app do
     run "touch #{current_path}/tmp/restart.txt"
   end
   
@@ -15,7 +15,7 @@ namespace :passenger do
     end
    
     desc "Display general Passernger status passernger-status"
-    task :general do
+    task :general, :roles => :app do
       run "passenger-status" do |channel, stream, data|
         puts data
       end
