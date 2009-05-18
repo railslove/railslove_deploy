@@ -37,7 +37,7 @@ set :log_directory, "#{shared_path}/system/logs"
 set :log_size, "150M"
 set :log_rotate, "15"
 
-set :shared_files, []
+set :shared_files, {}
 set :backup_dir, "/backups"
 
 
