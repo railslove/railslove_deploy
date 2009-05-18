@@ -1,0 +1,3 @@
+[submodule "lib/railslove/vendor/sprinkle"]
+	path = lib/railslove/vendor/sprinkle
+	url = git://github.com/bumi/sprinkle.git
