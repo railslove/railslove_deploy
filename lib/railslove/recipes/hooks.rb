@@ -28,12 +28,4 @@ namespace :hooks do
       end
     end
   end
-  
-  namespace :email do 
-    desc "notify via email"
-    task :notify do
-      
-    end
-  end
-  
 end
