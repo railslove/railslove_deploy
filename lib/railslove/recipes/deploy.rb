@@ -46,12 +46,4 @@ namespace :deploy do
     
   end
   
-  desc "initial"
-  task :initial do 
-    stack.setup
-    gems.install
-    setup
-    cold
-  end
-  
 end
