@@ -41,6 +41,13 @@ set :shared_files, {}
 set :backup_dir, "/backups"
 
 
+depend :remote, :gem, "mislav-will_paginate", ">=2.2.2"
+depend :remote, :gem, "right_aws", ">=1.9.0"
+depend :remote, :gem, "json"
+depend :remote, :gem, "haml"
+depend :remote, :gem, "oauth"
+
+
 
 after "deploy:setup",
   "logrotate:configure",
