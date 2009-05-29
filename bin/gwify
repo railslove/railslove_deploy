@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 if ARGV.first == "install"
-  require "#{File.dirname(__FILE__)}/../lib/railslove/vendor/sprinkle/lib/sprinkle"
+  require "#{File.dirname(__FILE__)}/../lib/railslove/sprinkle"
   Sprinkle::Script.sprinkle File.read("config/server/policy.rb"), "config/server/policy.rb"
 else
   require "fileutils"
@@ -16,6 +16,7 @@ else
   FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle.rb", "#{folder}/config/server/policy.rb")
   FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle_config.rb", "#{folder}/config/server/config.rb")
   FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/deploy.rb", "#{folder}/config/deploy.rb")
-
+  FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/safe.erb", "#{folder}/config/server/backup.rb")
+  
   puts "[Deployment files created]"
 end
