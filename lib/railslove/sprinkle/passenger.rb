@@ -5,17 +5,6 @@ package :passenger_gem do
   requires :ruby_enterprise
 end
 
-
-package :passenger_nginx, :provides => :appserver  do
-  description "Installs and configures the passenger for use with the awesome nginx server"
-  
-  requires :passenger_gem
-  
-  config do 
-    run "passenger-install-nginx-module --auto --auto-download"
-  end
-end
-
 package :passenger_apache, :provides => :appserver do
   description "Configures the passenger for use with apache"
   
@@ -39,5 +28,15 @@ package :passenger_apache, :provides => :appserver do
   verify do
     has_gem 'passenger'
     has_file '/etc/apache2/mods-available/passenger.load'
+  end
+end
+
+package :passenger_nginx, :provides => :appserver  do
+  description "Installs and configures the passenger for use with the awesome nginx server"
+  
+  requires :passenger_gem
+  
+  config do 
+    run "passenger-install-nginx-module --auto --auto-download"
   end
 end

@@ -28,6 +28,7 @@ set :use_sudo, false
 role :app, ""
 role :web, ""
 role :db,  "", :primary => true
+role :cache, ""
 
 
 
@@ -48,6 +49,8 @@ depend :remote, :gem, "haml"
 depend :remote, :gem, "oauth"
 
 
+before "deploy", "deploy:web:disable"
+after "deploy", "deploy:web:enable"
 
 after "deploy:setup",
   "logrotate:configure",
