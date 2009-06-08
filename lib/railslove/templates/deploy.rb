@@ -41,6 +41,7 @@ set :log_rotate, "15"
 set :shared_files, {}
 set :backup_dir, "/backups"
 
+set :job_runner_script, "script/job_runner"
 
 depend :remote, :gem, "mislav-will_paginate", ">=2.2.2"
 depend :remote, :gem, "right_aws", ">=1.9.0"
