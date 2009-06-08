@@ -1,7 +1,7 @@
 namespace :job_runner do
   desc "Start your Job runner process" 
   task :start, :roles => :app do
-    run "cd #{release_path}; RAILS_ENV=#{fetch(:rails_env, "production")} #{fetch(:job_runner_script, "script/job_runner")} stop" 
+    run "cd #{release_path}; RAILS_ENV=#{fetch(:rails_env, "production")} #{fetch(:job_runner_script, "script/job_runner")} start" 
   end
 
   desc "Stop your Job runner process" 
