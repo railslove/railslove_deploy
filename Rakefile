@@ -7,7 +7,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = "railslove_deploy"
-    s.summary = "The Railslove Deploy recipes"
+    s.summary = "The Railslove deploy gem to setup a full ruby stack in 5 minutes"
     s.email = "michael@railslove.com"
     s.homepage = "http://github.com/bumi/railslove_deploy"
     s.description = "TODO"
