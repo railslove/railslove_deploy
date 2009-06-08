@@ -17,6 +17,7 @@ else
   FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle_config.rb", "#{folder}/config/server/config.rb")
   FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/deploy.rb", "#{folder}/config/deploy.rb")
   FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/safe.erb", "#{folder}/config/server/backup.rb")
+  FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/maintenance.html", "#{folder}/config/server/maintenance.html")
   
   puts "[Deployment files created]"
 end

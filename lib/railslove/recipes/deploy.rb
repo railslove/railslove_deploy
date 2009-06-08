@@ -19,14 +19,14 @@ namespace :deploy do
     desc "disable application by adding a maintenance.html"
     task :disable, :roles => :web do 
       on_rollback {
-        run "rm #{current_path}/public/index.html"
+        run "rm #{shared_path}/system/maintenance.html"
       }
-      run "ln -l #{shared_path}/system/maintenance.html #{current_path}/public/index.html"
+      put render("config/server/maintenance.html", binding), "#{current_path}/system/maintenance.html"
     end
     
     desc "enable "
     task :enable, :roles => :web do 
-      run "rm #{current_path}/public/index.html"
+      run "rm #{shared_path}/system/maintenance.html"
     end
     
     desc "Restart Apache"
