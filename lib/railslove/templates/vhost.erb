@@ -27,6 +27,11 @@
 
   RewriteEngine On 
   
+  # Want to force default domain?
+  #RewriteCond %{HTTP_HOST} !^<%= domain.gsub('.','\.') %>
+  #RewriteRule ^(.*)$ http://<%= domain %>$1 [R=permanent,L]
+  
+  # Rewriting for Maintenance page
   RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
   RewriteCond %{SCRIPT_FILENAME} !maintenance.html
   RewriteRule ^.*$ /system/maintenance.html [L]
