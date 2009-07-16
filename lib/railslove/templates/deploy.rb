@@ -3,44 +3,33 @@
 # set :stages, %w(staging production)
 # set :default_stage, "staging"
 # require 'capistrano/ext/multistage'
-#
 require "railslove/recipes"
 
-set :application, ""
+
+#############################################################################
+# Application Server Configuration
+#############################################################################
+
+# the name of your application. This will be used as name for the deployment directory and webserver configuration
+set :application, "" 
+# the primary domain for your application
 set :domain, ""
+# comma seperated list of additional domains
 set :domain_alias, ""
-set :repository, ""
-set :scm, "git"
-set :branch, "master"
+# set to true if you want to rewrite the additional domains to the default domain. (www.example.com => example.com) 
+set :force_default_domain, false
 
-on :start do
-    `ssh-add`
-end
-set :deploy_via, :remote_cache
-
-default_run_options[:pty] = true
-ssh_options[:port] = 22
-ssh_options[:forward_agent] = true
-
-set :user, "rails"
-set :use_sudo, false
-
+# The IP addresses of your deployment servers
 role :app, ""
 role :web, ""
 role :db,  "", :primary => true
-role :cache, ""
 
-
-
+# target directory for the application
 set :deploy_to, "/var/www/rails_apps/#{application}"
 
-set :log_directory, "#{shared_path}/system/logs"
-set :log_size, "150M"
-set :log_rotate, "15"
-
-set :shared_files, {}
-
-set :job_runner_script, "script/job_runner"
+#############################################################################
+# Application Dependencies
+#############################################################################
 
 depend :remote, :gem, "mislav-will_paginate", ">=2.2.2"
 depend :remote, :gem, "right_aws", ">=1.9.0"
@@ -50,8 +39,65 @@ depend :remote, :gem, "haml"
 depend :remote, :gem, "oauth"
 
 
+#############################################################################
+# Source Code Repository Configuration
+#############################################################################
 
-before "deploy", "deploy:web:disable"
+# URL and configuration of the application source code repository. 
+set :repository, ""
+set :scm, "git"
+# This will specify the branch that gets checked out for the deployment.
+set :branch, "master"
+# Remote caching will keep a local git repo on the server you're deploying to and simply run a fetch from that rather than an entire clone.
+set :deploy_via, :remote_cache
+# If you're using git's submodule support for edge rails or merb, set this guy to make sure the submodules "git" checked out.
+# set :git_enable_submodules, 1
+
+
+
+#############################################################################
+# SSH/Connection Configuration
+#############################################################################
+
+# SSH Configuration. By default we're using forwar_agent
+set ssh_options = {:forward_agent => true, :port => 22}
+default_run_options[:pty] = true
+on :start do
+    `ssh-add`
+end
+
+# the user. this user ownes the used to login an
+set :user, "rails"
+set :use_sudo, false
+
+
+#############################################################################
+# Shared files
+#############################################################################
+
+# the files and directories that you want to share between the releases of your application
+# for example:
+# set :shared_files, {:files => "files"}
+# symlinks <release>/files to <shared>/files and 
+
+set :shared_files, {}
+
+
+#############################################################################
+# Logrotation configuration
+#############################################################################
+
+set :logrotate_options, [ { :rotate => 7, :size => 40MB }, :daily, :missingok, :compress, :delaycompress, :notifempty, :copytruncate ]
+set :logrotate_directory, "#{shared_path}/system/logs"
+
+
+#############################################################################
+# Capistrano Callbacks
+#############################################################################
+
+before "deploy", "deploy:web:disable",
+  "backup:run"
+  
 after "deploy", "deploy:web:enable"
 
 after "deploy:setup",
