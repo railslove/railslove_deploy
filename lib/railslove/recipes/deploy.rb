@@ -21,7 +21,7 @@ namespace :deploy do
       on_rollback {
         run "rm #{shared_path}/system/maintenance.html"
       }
-      put render("config/server/maintenance.html", binding), "#{current_path}/system/maintenance.html"
+      put render("config/server/maintenance.html", binding), "#{shared_path}/system/maintenance.html"
     end
     
     desc "enable "
