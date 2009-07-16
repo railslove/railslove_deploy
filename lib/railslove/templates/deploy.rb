@@ -87,7 +87,7 @@ set :shared_files, {}
 # Logrotation configuration
 #############################################################################
 
-set :logrotate_options, [ { :rotate => 7, :size => 40MB }, :daily, :missingok, :compress, :delaycompress, :notifempty, :copytruncate ]
+set :logrotate_options, [ { :rotate => 30, :size => 10MB }, :delaycompress, :daily, :missingok, :compress, :delaycompress, :notifempty, :copytruncate, :sharedscripts ]
 set :logrotate_directory, "#{shared_path}/system/logs"
 
 
