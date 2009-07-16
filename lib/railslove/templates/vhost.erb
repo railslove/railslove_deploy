@@ -1,6 +1,8 @@
 <VirtualHost *:80>
 	ServerName <%= domain %>
-	ServerAlias <%= domain_alias %>
+	<% if fetch(:domain_alias, false) -%>
+	ServerAlias <%= fetch(:domain_alias, "") %>
+	<% end -%>
 	DocumentRoot /var/www/rails_apps/<%= application %>/current/public
 
 	<directory "/var/www/rails_apps/<%= application %>/current/public">
@@ -28,8 +30,10 @@
   RewriteEngine On 
   
   # Want to force default domain?
-  #RewriteCond %{HTTP_HOST} !^<%= domain.gsub('.','\.') %>
-  #RewriteRule ^(.*)$ http://<%= domain %>$1 [R=permanent,L]
+  <% if fetch(:force_default_domain, false) -%>
+  RewriteCond %{HTTP_HOST} !^<%= domain.gsub('.','\.') %>
+  RewriteRule ^(.*)$ http://<%= domain %>$1 [R=permanent,L]
+  <% end -%>
   
   # Rewriting for Maintenance page
   RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f

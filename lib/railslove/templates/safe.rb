@@ -1,6 +1,6 @@
 # Example of a safe script to backup your server
 #
-# for more detail look here:
+# for more detail have a look at:
 # http://github.com/astrails/safe/tree/master
 # http://blog.astrails.com/2009/4/6/simple-backups-can-be-simple
 safe do
@@ -14,15 +14,15 @@ safe do
   end
 
   keep do
-    local 3
-    s3 3
+    local 15
+    s3 15
   end
 
   mysqldump do
     options "-ceKq --single-transaction --create-options"
 
-    user "root"
-    password "............"
+    user "readonly"
+    password ""
     #socket "/var/run/mysqld/mysqld.sock"
 
     database :your_app_production
