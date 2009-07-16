@@ -1,6 +1,6 @@
 package :passenger_gem do 
   description 'Phusion Passenger (aka mod_rails)'
-  version '2.2.2'
+  version '2.2.4'
   gem 'passenger'
   requires :ruby_enterprise
 end
@@ -11,7 +11,7 @@ package :passenger_apache, :provides => :appserver do
   requires :apache, :passenger_gem
   
   config do 
-    passenger_version = '2.2.2'
+    passenger_version = '2.2.4'
       
     pre :install, 'passenger-install-apache2-module --auto'
     put "/etc/apache2/mods-available/passenger.load", ERB.new(open("#{File.dirname(__FILE__)}/../templates/passenger.load").read).result(binding)
