@@ -17,14 +17,19 @@ namespace :logrotate do
 end
 
 def generate_logrotate_configuration
+  config = []    
+  fetch(:logrotate_options, []).each do |option|            
+    if option.is_a?(Hash)
+      option.each do |key, value|
+        config << "#{key} #{value}"
+      end
+    else
+      config << option.to_s
+    end
+  end    
   %Q{
 #{log_directory}/*.log {
-  compress
-  size #{log_size}
-  rotate #{log_rotate}
-  missingok
-  compress
-  copytruncate
+  #{config.join("\n  ")}
 }
   }
 end
