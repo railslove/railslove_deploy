@@ -1,0 +1,56 @@
+#
+# -*- shell-script -*-
+#
+#  Configuration file for ferm(1).
+#
+
+def $SERVER_TCP_PORTS = (<%= ferm_server_tcp_ports %>);
+
+table filter {
+    chain INPUT {
+        policy DROP;
+
+        # connection tracking
+        mod state state INVALID DROP;
+        mod state state (ESTABLISHED RELATED) ACCEPT;
+
+        # allow local packages
+        interface lo ACCEPT;
+
+        # respond to ping, but limit that
+        proto icmp ACCEPT; 
+
+        # allow IPsec
+        proto udp dport 500 ACCEPT;
+        proto (esp ah) ACCEPT;
+
+        # allow the defined tcp connections
+        #proto tcp dport ssh ACCEPT;
+				proto tcp dport $SERVER_TCP_PORTS ACCEPT;
+    }
+    chain OUTPUT {
+        policy ACCEPT;
+
+        # connection tracking
+        #mod state state INVALID DROP;
+        mod state state (ESTABLISHED RELATED) ACCEPT;
+    }
+    chain FORWARD {
+        policy DROP;
+
+        # connection tracking
+        mod state state INVALID DROP;
+        mod state state (ESTABLISHED RELATED) ACCEPT;
+    }
+}
+
+# IPv6:
+#domain ip6 {
+#    table filter {
+#        chain INPUT {
+#            policy ACCEPT;
+#            # ...
+#        }
+#        # ...
+#    }
+#}
