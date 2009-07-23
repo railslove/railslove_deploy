@@ -1,0 +1,18 @@
+# from http://mmonit.com/wiki/Monit
+# Hint: It is recommended to use a "token" file (an empty file) for monit to request. That way, it is easy to filter out all the requests made by monit in the httpd access log file. Here's a trick shared by Marco Ermini, place the following in httpd.conf to stop apache from loggin any requests done by monit:
+#  SetEnvIf        Request_URI "^\/monit\/token$" dontlog
+#  CustomLog       logs/access.log common env=!dontlog
+#
+#
+#check process apache with pidfile /var/run/apache2.pid 
+#  group web
+#  start program = "/etc/init.d/apache2 start" 
+#  stop program  = "/etc/init.d/apache2 stop"
+#  if cpu > 60% for 2 cycles then alert 
+#  if cpu > 80% for 5 cycles then restart
+#  if totalmem > 200.0 MB for 5 cycles then restart 
+#  if children > 250 then restart 
+#  if loadavg(5min) greater than 20 for 8 cycles then alert 
+#  if failed host localhost port 80 
+#          protocol HTTP request "/monit/token" then restart
+#

@@ -8,9 +8,9 @@ else
 
   `capify #{folder}`
 
-  FileUtils.mkdir_p("#{folder}/config/god")
   FileUtils.mkdir_p("#{folder}/config/deploy")
   FileUtils.mkdir_p("#{folder}/config/server")
+  FileUtils.mkdir_p("#{folder}/config/server/monit")
 
   FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/vhost.erb", "#{folder}/config/server/vhost.erb")
   FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/sprinkle.rb", "#{folder}/config/server/policy.rb")

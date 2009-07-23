@@ -84,6 +84,49 @@ set :shared_files, {}
 
 
 #############################################################################
+# Monit configuration
+#############################################################################
+
+# this allows you to set some basic monit configuration. 
+# monit is a utility for managing and monitoring, processes, files, directories and devices on a UNIX system.
+# for example it can alert your if apache goes down and reboot it.
+# for advanced configuration edit /etc/monit/minit.rc on your server
+
+# options are:
+# :mailserver: the complete monit mail server configuration (see: http://mmonit.com/monit/documentation/monit.html#setting_a_mail_server_for_alert_messages)
+# :webserver: the complete monit web server configuration (see: http://mmonit.com/monit/documentation/monit.html#monit_httpd)
+# :send_alerts_to: array with email addresses to notify
+
+set :monit_config, {}
+
+# Example:
+#set :monit_config, {
+#  :mailserver => %Q{
+#    set mailserver mail.example.com
+#         username "username" password "password" using tlsv1
+#         using hostname "host.example.org"
+#  },
+#  :send_alerts_to => "admin@example.com", 
+#  :webserver => %Q{
+#    set httpd port 2812 and
+#      use address localhost
+#      allow localhost
+#      allow admin:kgf76878oas
+#  }
+#}
+
+
+#############################################################################
+# Ferm configuration
+#############################################################################
+
+# ferm is a to to easily configure your IPtables. 
+# for more information visit: http://ferm.foo-projects.org/
+# just add the ports that should be available here.
+set :ferm_server_tcp_ports, "http https ssh" # only http (port 80) https (port 433) and ssh (port 22) are open.
+
+
+#############################################################################
 # Logrotation configuration
 #############################################################################
 
