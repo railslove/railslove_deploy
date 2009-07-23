@@ -28,6 +28,7 @@ package :passenger_apache, :provides => :appserver do
   verify do
     has_gem 'passenger'
     has_file '/etc/apache2/mods-available/passenger.load'
+    has_file '/etc/apache2/mods-available/passenger.conf'
   end
 end
 
