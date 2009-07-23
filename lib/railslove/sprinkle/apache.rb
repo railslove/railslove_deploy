@@ -5,6 +5,11 @@ package :apache, :provides => :webserver do
     post :install, 'a2enmod deflate'
     post :install, 'a2enmod expires'
     post :install, 'a2enmod headers'
+    # configure /server-status module
+    ["<Location /server-status>","SetHandler server-status","Order deny,allow", "Deny from all", "Allow from 127.0.0.1", "</Location>"].each do |line|
+      post :install, "echo '#{line}' | sudo tee -a /etc/apache2/status.conf"
+  end
+  
   end
   
   verify do
