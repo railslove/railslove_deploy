@@ -1,4 +1,4 @@
-#check process job_runner with pidfile /var/www/rails_apps/application/current/log/job_runner.1.pid
-#  start program = "/var/www/rails_apps/application/current/script/job_runner start production" as uid rails and gid rails
-#  stop program = "/var/www/rails_apps/application/current/script/job_runner stop production" as uid rails and gid rails
-#  group my_app
+#check process job_runner with pidfile /var/www/rails_apps/<%= application %>/current/log/job_runner.1.pid
+#  start program = "/var/www/rails_apps/<%= application %>/current/script/job_runner start production" as uid rails and gid rails
+#  stop program = "/var/www/rails_apps/<%= application %>/current/script/job_runner stop production" as uid rails and gid rails
+#  group <%= application %>
