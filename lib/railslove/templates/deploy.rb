@@ -99,6 +99,11 @@ set :shared_files, {}
 
 set :monit_config, {}
 
+# Monit is a system-wide configuration so you should run this only once on your server. (deactivate this if you have several apps on your server)
+after "deploy:setup", 
+  "monit:setup",
+  "monit:start"
+    
 # Example:
 #set :monit_config, {
 #  :mailserver => %Q{
@@ -124,6 +129,10 @@ set :monit_config, {}
 # for more information visit: http://ferm.foo-projects.org/
 # just add the ports that should be available here.
 set :ferm_server_tcp_ports, "http https ssh" # only http (port 80) https (port 433) and ssh (port 22) are open.
+
+# IPtables is a system-wide configuration so you should run this only once on your server. (deactivate this if you have several apps on your server)
+after "deploy:setup", 
+  "ferm:configure"
 
 
 #############################################################################
