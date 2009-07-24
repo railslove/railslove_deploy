@@ -7,6 +7,14 @@ namespace :monit do
     sudo "echo 'startup=1' | sudo tee -a /etc/default/monit"
   end
   
+  desc "Upload global monit configurations. This task allows you to install system-wide monit configuration files"
+  task :upload_global do
+    Dir["config/server/monit/*"].each do |file|
+      put render("config/server/monit/#{file}", binding), "/tmp/#{file}"
+      sudo "mv /tmp/#{file} /etc/monit.d/#{file}"
+    end
+  end
+  
   desc "Start monit on the server"
   task :start do 
     sudo "/etc/init.d/monit start"
