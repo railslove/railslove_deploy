@@ -130,7 +130,7 @@ set :ferm_server_tcp_ports, "http https ssh" # only http (port 80) https (port 4
 # Logrotation configuration
 #############################################################################
 
-set :logrotate_options, [ { :rotate => 30, :size => 10MB }, :delaycompress, :daily, :missingok, :compress, :delaycompress, :notifempty, :copytruncate, :sharedscripts ]
+set :logrotate_options, [ { :rotate => 30, :size => "10MB" }, :delaycompress, :daily, :missingok, :compress, :delaycompress, :notifempty, :copytruncate, :sharedscripts ]
 set :logrotate_directory, "#{shared_path}/system/logs"
 
 

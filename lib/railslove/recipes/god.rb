@@ -1,3 +1,0 @@
-namespace :god do 
-  
-end
