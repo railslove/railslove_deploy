@@ -20,7 +20,8 @@ else
   FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/maintenance.html", "#{folder}/config/server/maintenance.html")
   
   FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/monitrc.erb", "#{folder}/config/server/monitrc.erb")
-  Dir["#{File.dirname(__FILE__)}/../lib/railslove/templates/monitoring/*"].each do |monit_config|
+  Dir.new("#{File.dirname(__FILE__)}/../lib/railslove/templates/monitoring").each do |monit_config|
+    next unless File.file?("#{File.dirname(__FILE__)}/../lib/railslove/templates/monitoring/#{monit_config}")
     FileUtils.cp("#{File.dirname(__FILE__)}/../lib/railslove/templates/monitoring/#{monit_config}", "#{folder}/config/server/monit/#{monit_config}")
   end
   

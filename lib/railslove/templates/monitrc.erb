@@ -18,7 +18,7 @@
 ## intervals.
 #
 
-set daemon  120
+set daemon  60
 
 #
 #
@@ -80,6 +80,9 @@ set logfile /var/log/monit
 #
 # set mail-format { from: monit@foo.bar }
 #
+
+<%= monit_config[:mail_format] %>
+
 #
 ## You can set the alert recipients here, which will receive the alert for
 ## each service. The event alerts may be restricted using the list.
@@ -89,7 +92,8 @@ set logfile /var/log/monit
 #                                                # timeout alert
 #
 
-set alert <%= monit_config[:send_alerts_to] %>
+
+<%= monit_config[:alerts] %>
 
 #
 ## Monit has an embedded webserver, which can be used to view the 

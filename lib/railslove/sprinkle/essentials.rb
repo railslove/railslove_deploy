@@ -1,6 +1,6 @@
 package :essentials do
   description 'Essential Tools'
-  apt %w{sudo wget make unzip curl libcurl3 libcurl3-dev libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev libgcrypt11-dev openssl libssl-dev gcc g++ gettext libreadline-dev logrotate ssl-cert} do
+  apt %w{sudo wget make unzip curl libcurl3 libcurl3-dev libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev libgcrypt11-dev openssl libssl-dev gcc g++ gettext libreadline-dev logrotate ssl-cert flex} do
     pre :install, 'apt-get update'
     pre :install, 'apt-get upgrade'
   end

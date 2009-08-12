@@ -111,12 +111,13 @@ after "deploy:setup",
 #         username "username" password "password" using tlsv1
 #         using hostname "host.example.org"
 #  },
-#  :send_alerts_to => "admin@example.com", 
+#  :mail_format => "set mail-format { from: monit@foo.bar }"
+#  :alerts => "set alert admin@example.com", 
 #  :webserver => %Q{
 #    set httpd port 2812 and
 #      use address localhost
 #      allow localhost
-#      allow admin:kgf76878oas
+#      allow monit:kse31gf78oA
 #  }
 #}
 
@@ -128,7 +129,7 @@ after "deploy:setup",
 # ferm is a to to easily configure your IPtables. 
 # for more information visit: http://ferm.foo-projects.org/
 # just add the ports that should be available here.
-set :ferm_server_tcp_ports, "http https ssh" # only http (port 80) https (port 433) and ssh (port 22) are open.
+set :ferm_server_tcp_ports, "http https ssh 2812" # only http (port 80) https (port 433) ssh (port 22) and port 2812 (used by monit) are open.
 
 # IPtables is a system-wide configuration so you should run this only once on your server. (deactivate this if you have several apps on your server)
 after "deploy:setup", 
@@ -147,10 +148,14 @@ set :logrotate_directory, "#{shared_path}/system/logs"
 # Capistrano Callbacks
 #############################################################################
 
-before "deploy", "deploy:web:disable",
+before "deploy", 
+  "monit:stop",
+  "deploy:web:disable",
   "backup:run"
   
-after "deploy", "deploy:web:enable"
+after "deploy", 
+  "monit:start",
+  "deploy:web:enable"
 
 after "deploy:setup",
   "logrotate:configure",
