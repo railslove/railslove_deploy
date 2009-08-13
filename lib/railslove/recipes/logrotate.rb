@@ -28,7 +28,7 @@ def generate_logrotate_configuration
     end
   end    
   %Q{
-#{log_directory}/*.log {
+#{logrotate_directory}/*.log {
   #{config.join("\n  ")}
 }
   }
