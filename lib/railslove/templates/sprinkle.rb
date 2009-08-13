@@ -13,6 +13,9 @@ policy :passenger_stack, :roles => :app do
   requires :rails_user
   requires :database_driver
   requires :usefull_gems
+  requires :image_magick
+  requires :ferm
+  requires :monit
 end
 
 deployment do
