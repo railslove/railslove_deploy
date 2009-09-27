@@ -16,6 +16,7 @@ package :rails_user do
     run "chown rails:rails -R /var/www/rails_apps;echo 0"
     run "cp /root/.gemrc /home/rails/.gemrc"
     run "chown rails:rails /home/rails/.gemrc;echo 0"
+    runy "mkdir /backup;echo 0"
   end
   
 end
