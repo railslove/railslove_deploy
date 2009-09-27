@@ -60,7 +60,7 @@ set :deploy_via, :remote_cache
 #############################################################################
 
 # SSH Configuration. By default we're using forwar_agent
-set ssh_options = {:forward_agent => true, :port => 22}
+set :ssh_options, {:forward_agent => true, :port => 22}
 default_run_options[:pty] = true
 on :start do
     `ssh-add`
@@ -99,11 +99,11 @@ set :shared_files, {}
 
 set :monit_config, {}
 
-# Monit is a system-wide configuration so you should run this only once on your server. (deactivate this if you have several apps on your server)
-after "deploy:setup", 
-  "monit:setup",
-  "monit:start"
-    
+# Monit is a system-wide configuration so you should run this only once on your server.
+# after "deploy:setup", 
+#   "monit:setup",
+#   "monit:start"
+#     
 # Example:
 #set :monit_config, {
 #  :mailserver => %Q{
@@ -148,10 +148,12 @@ set :logrotate_directory, "#{shared_path}/system/logs"
 # Capistrano Callbacks
 #############################################################################
 
+# run backups before each deployment?
+#before "deploy",
+#  "backup:run"
+
 before "deploy", 
-  "monit:stop",
-  "deploy:web:disable",
-  "backup:run"
+  "deploy:web:disable"
   
 after "deploy", 
   "monit:start",
