@@ -152,12 +152,12 @@ set :logrotate_directory, "#{shared_path}/system/logs"
 #before "deploy",
 #  "backup:run"
 
-before "deploy", 
-  "deploy:web:disable"
-  
-after "deploy", 
-  "monit:start",
-  "deploy:web:enable"
+# disable the app before deployment?
+# it will upload config/server/maintenance.html to your server.
+#before "deploy", 
+#  "deploy:web:disable"  
+#after "deploy", 
+#  "deploy:web:enable"
 
 after "deploy:setup",
   "logrotate:configure",
