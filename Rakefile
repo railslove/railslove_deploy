@@ -7,15 +7,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = "railslove_deploy"
-    s.summary = "The Railslove deploy gem to setup a full ruby stack in 5 minutes"
+    s.summary = "The Railslove deploy gem to setup a full ruby stack"
     s.email = "michael@railslove.com"
-    s.homepage = "http://github.com/bumi/railslove_deploy"
-    s.description = "TODO"
+    s.homepage = "http://github.com/railslove/railslove_deploy"
+    s.description = "The Railslove deploy gem is a collection of sprinkle and capistrano recipes to setup your server and app deployment"
     s.authors = ["Michael Bumann"]
-    s.executables = ["gwify"]
+    s.executables = ["deployify"]
     s.files = FileList["*.rb","bin/*", "lib/**/*", "test/**/*"]
     s.add_dependency("capistrano", ">= 2.5")
-    s.add_dependency("sprinkle", ">= 0.1.9")
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
