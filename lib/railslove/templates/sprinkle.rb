@@ -4,8 +4,12 @@ require "railslove/sprinkle"
 policy :passenger_stack, :roles => :app do
   requires :webserver
   requires :database
-  requires :memcached
+  
+  # memcached
+  requires :memcached_daemon
   requires :libmemcached
+  requires :memcached_conf
+  
   requires :scm
   requires :ruby
   requires :searchengine
