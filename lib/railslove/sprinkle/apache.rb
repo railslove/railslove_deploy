@@ -23,10 +23,17 @@ end
 package :apache_xsendfile do
   description "installs the Apache X-Sendfile module"
   source "http://tn123.ath.cx/mod_xsendfile/mod_xsendfile-0.9.tar.gz" do
-    custom_install "apxs2 -cia mod_xsendfile.c"
+    # apxs throws an error becaus it can not activate the module. we just ignore that 
+    # apxs error:"Error: Activation failed for custom /etc/apache2/httpd.conf file.."
+    custom_install 'apxs2 -cia mod_xsendfile.c;echo 0'
     post :install, "touch /etc/apache2/mods-available/xsendfile.load"
     post :install, 'echo "LoadModule xsendfile_module /usr/lib/apache2/modules/mod_xsendfile.so" > /etc/apache2/mods-available/xsendfile.load'
     post :install, "a2enmod xsendfile"
+  end
+  
+  verify do
+    has_file '/usr/lib/apache2/modules/mod_xsendfile.so'
+    has_file '/etc/apache2/mods-available/xsendfile.load'
   end
   requires :apache
 end
