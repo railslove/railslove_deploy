@@ -20,6 +20,18 @@ package :apache, :provides => :webserver do
   requires :essentials, :apache2_prefork_dev
 end
 
+package :apache_xsendfile do
+  description "installs the Apache X-Sendfile module"
+  source "http://tn123.ath.cx/mod_xsendfile/mod_xsendfile-0.9.tar.gz" do
+    custom_install "apxs2 -cia mod_xsendfile.c"
+    post :install, "touch /etc/apache2/mods-available/xsendfile.load"
+    post :install, 'echo "LoadModule xsendfile_module /usr/lib/apache2/modules/mod_xsendfile.so" > /etc/apache2/mods-available/xsendfile.load'
+    post :install, "a2enmod xsendfile"
+  end
+  requires :apache
+end
+
+
 package :apache2_prefork_dev do
   description 'A dependency required by some packages.'
   apt 'apache2-prefork-dev'
