@@ -21,6 +21,8 @@ package :ruby_enterprise, :provides => :ruby do
     #reload /etc/profile 
     post :install, "source /etc/profile"
     post :install, "gem sources -a http://gems.github.com"
+    post :install, "gem install gemcutter"
+    post :install, "gem tumble"
   end
   
   verify do
