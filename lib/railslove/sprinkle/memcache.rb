@@ -17,9 +17,15 @@ package :memcached_conf do
     post :install, "chown memcached:memcached /var/run/memcached"
     
     post :install, 'update-rc.d memcached defaults'
+    post :install, 'chmod +x /etc/init.d/memcached'
     post :install, '/etc/init.d/memcached start'
   end
   requires :memcached_daemon
+  
+  verify do
+    has_file '/etc/init.d/memcached'
+    has_process 'memcached'
+  end
 end
 
 package :libmemcached do
