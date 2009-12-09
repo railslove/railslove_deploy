@@ -12,9 +12,10 @@ namespace :monit do
   task :upload_global do
     Dir.new("config/server/monit").each do |file|
       next unless File.file?("config/server/monit/#{file}")
-      put render("config/server/monit/#{file}", binding), "/tmp/#{file.gsub('.erb', "")}"
-      sudo "mv /tmp/#{file} /etc/monit.d/#{file}"
-      sudo "chown root:root /etc/monit.d/#{file}"
+      file_name = file.gsub('.erb', "")
+      put render("config/server/monit/#{file}", binding), "/tmp/#{file_name}"
+      sudo "mv /tmp/#{file_name} /etc/monit.d/#{file_name}"
+      sudo "chown root:root /etc/monit.d/#{file_name}"
     end
   end
   
