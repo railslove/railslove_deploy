@@ -5,13 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = %q{railslove_deploy}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Bumann"]
-  s.date = %q{2009-12-09}
+  s.date = %q{2009-12-16}
   s.default_executable = %q{deployify}
-  s.description = %q{The Railslove deploy gem is a collection of sprinkle and capistrano recipes to setup your server and app deployment}
+  s.description = %q{The Railslove deploy gem is a collection of sprinkle and capistrano recipes to setup your server and app deployment. Setup your server and deploy your app within minutes and let the script }
   s.email = %q{michael@railslove.com}
   s.executables = ["deployify"]
   s.extra_rdoc_files = [
@@ -88,7 +88,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{The Railslove deploy gem to setup a full ruby stack}
+  s.summary = %q{The Railslove deploy gem to setup a full ruby server stack. Includes Sprinkle setup scripts and Capistrano deployment recipes.}
   s.test_files = [
     "test/railslove_deploy_test.rb",
      "test/test_helper.rb"
