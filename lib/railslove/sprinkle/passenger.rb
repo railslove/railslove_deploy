@@ -1,6 +1,6 @@
 package :passenger_gem do 
   description 'Phusion Passenger (aka mod_rails)'
-  version '2.2.5'
+  version '2.2.8'
   gem 'passenger'
   requires :ruby_enterprise
   
@@ -14,7 +14,7 @@ package :passenger_apache, :provides => :appserver do
   # require the apache passenger module load/conf files before installation because of a sprinkle limitation.
   requires :apache, :passenger_gem, :passenger_module_load, :passenger_module_conf
   
-  passenger_version = '2.2.5'
+  passenger_version = '2.2.8'
   
   noop do 
     pre :install, 'passenger-install-apache2-module --auto'
@@ -35,7 +35,7 @@ package :passenger_module_load do
   requires :apache, :passenger_gem
   
   #TODO: :render => true seems not to work? hello sprinkle?!
-  passenger_version = '2.2.5'
+  passenger_version = '2.2.8'
   transfer "#{File.dirname(__FILE__)}/../templates/passenger.load", "/etc/apache2/mods-available/passenger.load", :render => true
   
   verify do
@@ -49,7 +49,7 @@ package :passenger_module_conf do
   requires :apache, :passenger_gem
   
   #TODO: :render => true seems not to work? hello sprinkle?!  
-  passenger_version = '2.2.5'
+  passenger_version = '2.2.8'
   transfer "#{File.dirname(__FILE__)}/../templates/passenger.conf", "/etc/apache2/mods-available/passenger.conf", :render => true
   
   verify do
