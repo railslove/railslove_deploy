@@ -17,6 +17,7 @@ begin
     s.files = FileList["*.rb","bin/*", "lib/**/*", "test/**/*"]
     s.add_dependency("capistrano", ">= 2.5")
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
