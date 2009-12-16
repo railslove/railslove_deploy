@@ -1,7 +1,10 @@
 railslove_deploy
 ================
 
-Description goes here.
+The Railslove deploy gem to setup a full ruby server stack. Includes Sprinkle setup scripts and Capistrano deployment recipes.
+
+TODO: README
+
 
 COPYRIGHT
 =========

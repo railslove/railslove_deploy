@@ -9,14 +9,15 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Bumann"]
-  s.date = %q{2009-11-11}
+  s.date = %q{2009-12-09}
   s.default_executable = %q{deployify}
   s.description = %q{The Railslove deploy gem is a collection of sprinkle and capistrano recipes to setup your server and app deployment}
   s.email = %q{michael@railslove.com}
   s.executables = ["deployify"]
   s.extra_rdoc_files = [
     "LICENSE",
-     "README"
+     "README",
+     "TODO"
   ]
   s.files = [
     "bin/deployify",

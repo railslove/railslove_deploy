@@ -7,10 +7,10 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = "railslove_deploy"
-    s.summary = "The Railslove deploy gem to setup a full ruby stack"
+    s.summary = "The Railslove deploy gem to setup a full ruby server stack. Includes Sprinkle setup scripts and Capistrano deployment recipes."
     s.email = "michael@railslove.com"
     s.homepage = "http://github.com/railslove/railslove_deploy"
-    s.description = "The Railslove deploy gem is a collection of sprinkle and capistrano recipes to setup your server and app deployment"
+    s.description = "The Railslove deploy gem is a collection of sprinkle and capistrano recipes to setup your server and app deployment. Setup your server and deploy your app within minutes and let the script "
     s.authors = ["Michael Bumann"]
     s.executables = ["deployify"]
     s.files = FileList["*.rb","bin/*", "lib/**/*", "test/**/*"]
