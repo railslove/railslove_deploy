@@ -19,7 +19,7 @@ package :monit_init_d do
   requires :monit
   
   transfer "#{File.dirname(__FILE__)}/../templates/monit_init", "/etc/init.d/monit" do
-    post :install, "chmod +c /etc/init.d/monit"
+    post :install, "chmod +x /etc/init.d/monit"
   end
   
   #verify do 

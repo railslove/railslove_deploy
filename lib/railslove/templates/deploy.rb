@@ -113,6 +113,7 @@ set :monit_config, {}
 #  },
 #  :mail_format => "set mail-format { from: monit@foo.bar }"
 #  :alerts => "set alert admin@example.com", 
+#  :mail_format => "set mail-format { from: monit@example.com }",
 #  :webserver => %Q{
 #    set httpd port 2812 and
 #      use address localhost
