@@ -5,7 +5,7 @@ package :sqlite3, :provides => :database do
   apt 'sqlite3 libsqlite3-dev libsqlite3-ruby1.8'
 end
 
-package :sqlite3_ruby_driver do
+package :sqlite3_ruby_driver, :provides => :database_driver do
   description 'Ruby SQLite3 library.'
   gem 'sqlite3-ruby'
   
