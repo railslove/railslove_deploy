@@ -21,6 +21,8 @@ policy :passenger_stack, :roles => :app do
   requires :ferm              # ferm iptable configuration tool
   requires :ferm_conf         # configure ferm (allow http, https and ssh)
   requires :monit             # monit - system process monitoring
+  requires :munin_node        # install munin-node for system monitoring
+  requires :munin_apache_status # configure extended apache status information
 end
 
 deployment do
