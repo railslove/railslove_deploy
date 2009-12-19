@@ -1,7 +1,8 @@
 package :munin_node do 
   description 'munin-node - daemon to gather system ressouce information in cooperation with the main Munin program'
   requires :essentials
-  apt 'munin-node'
+  # the apache stats for munin need libwww-perl
+  apt 'munin-node libwww-perl'
   
   verify do
     has_executable "munin-node"
