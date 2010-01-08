@@ -11,7 +11,7 @@ namespace :hooks do
       
       status = Capistrano::CLI.ui.ask("Update Twitter status to: (leave blank to skip)")
       user =  fetch(:twitter_user, nil).nil? ? Capistrano::CLI.ui.ask("Twitter username: ") : fetch(:twitter_user, nil)
-      passwd = fetch(:twitter_password, nil).nil? ? Capistrano::CLI.password_prompt("Twitter password for @#{twitter_user}: ") : fetch(:twitter_password, nil)
+      passwd = fetch(:twitter_password, nil).nil? ? Capistrano::CLI.password_prompt("Twitter password for @#{user}: ") : fetch(:twitter_password, nil)
       unless status.empty?
       
         http = Net::HTTP.new(url.host, 80)
