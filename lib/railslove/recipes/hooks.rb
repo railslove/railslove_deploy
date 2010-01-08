@@ -22,6 +22,7 @@ namespace :hooks do
         body = "status=#{CGI.escape(status)}"
         begin
           http.send(:post, url.path, body, headers) 
+          puts "Status updated..."
         rescue Timeout::Error => e
           puts "Timeout after 20s: Seems like Twitter is down."
           puts "Use \"cap hooks:twitter:update\" to update Twitter status later w/o deploying"
