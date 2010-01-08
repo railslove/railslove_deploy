@@ -9,9 +9,9 @@ package :monit, :provides => :monitoring do
   
   requires :essentials, :monit_dependencies
   
-  #verify do
-  #  has_executable "monit"
-  #end
+  verify do
+    has_executable "monit"
+  end
 end
 
 package :monit_init_d do
@@ -22,9 +22,9 @@ package :monit_init_d do
     post :install, "chmod +x /etc/init.d/monit"
   end
   
-  #verify do 
-  #  has_file "/etc/init.d/monit"
-  #end
+  verify do 
+    has_file "/etc/init.d/monit"
+  end
   
 end
   
