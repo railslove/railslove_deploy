@@ -32,7 +32,9 @@ ignore_file \.pod$
 # doesn't understand CIDR-style network notation.  You may repeat
 # the allow line as many times as you'd like
 
-allow ^127\.0\.0\.1$
+<% for address in fetch(:munin_allow_from_addresses, ['127.0.0.1'] %>
+allow ^<%= address.gsub('.','\.') %>$
+<% end %>
 
 # Which address to bind to;
 host *
