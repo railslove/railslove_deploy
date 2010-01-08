@@ -5,7 +5,7 @@ namespace :shared do
   
   task :setup do
     fetch(:shared_files,{}).each do |source,target|
-      path = File.directory?(target) ? target : File.dirname(target)
+      path = File.directory?(source) ? target : File.dirname(target)
       run "mkdir -p #{shared_path}/#{path}"
     end
   end
