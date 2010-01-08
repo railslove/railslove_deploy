@@ -77,8 +77,11 @@ set :use_sudo, false
 
 # the files and directories that you want to share between the releases of your application
 # for example:
-# set :shared_files, {:files => "files"}
-# symlinks <release>/files to <shared>/files and 
+# set :shared_files, {"public/files" => "files"}
+# symlinks <release>/public/files to <shared>/files and 
+# set :shared_files, {"config/myconf.rb" => "config/myconfig.rb"}
+# symlinks <release>/config/myconfig.rb to <shared>/config/myconfig.rb and
+
 
 set :shared_files, {}
 
@@ -138,6 +141,19 @@ after "deploy:setup",
 
 
 #############################################################################
+# Munin configuration
+#############################################################################
+
+# A list of addresses that are allowed to connect to the munin-node. 
+# Add the IP address of your munin-server.
+
+set :munin_allow_from_addresses, ["127.0.0.1"]
+
+after "deploy:setup", 
+  "munin_node:configure"
+  
+
+#############################################################################
 # Logrotation configuration
 #############################################################################
 
@@ -165,6 +181,7 @@ after "deploy:setup",
   "apache:upload_vhost_config",
   "db:upload_config_yml",
   "gems:install"
+  "shared:setup"
   
 after "deploy:cold",
   "apache:enable_site",

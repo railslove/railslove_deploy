@@ -1,7 +1,11 @@
 namespace :shared do
+  
+  # source is the file/folder within the release 
+  # target is the file/folder in the shared folder
+  
   task :setup do
     fetch(:shared_files,{}).each do |source,target|
-      path = File.directory?(source) ? File.dirname(target) : target
+      path = File.directory?(target) ? target : File.dirname(target)
       run "mkdir -p #{shared_path}/#{path}"
     end
   end
