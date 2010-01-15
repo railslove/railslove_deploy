@@ -12,8 +12,8 @@ namespace :shared do
 
   task :symlink do 
     fetch(:shared_files,{}).each do |source,target|
-      run "rm -rf #{source}"
-      run "ln -s #{shared_path}/#{target} #{release_path}/#{source}"
+      run "rm -rf #{release_path}/#{source}"
+      run "ln -nfs #{shared_path}/#{target} #{release_path}/#{source}"
     end
   end
   
