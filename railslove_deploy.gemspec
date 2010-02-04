@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{railslove_deploy}
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Bumann"]
-  s.date = %q{2009-12-16}
+  s.date = %q{2010-02-04}
   s.default_executable = %q{deployify}
   s.description = %q{The Railslove deploy gem is a collection of sprinkle and capistrano recipes to setup your server and app deployment. Setup your server and deploy your app within minutes and let the script }
   s.email = %q{michael@railslove.com}
@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
      "lib/railslove/recipes/memcache.rb",
      "lib/railslove/recipes/misc.rb",
      "lib/railslove/recipes/monit.rb",
+     "lib/railslove/recipes/munin_node.rb",
      "lib/railslove/recipes/passenger.rb",
      "lib/railslove/recipes/shared.rb",
      "lib/railslove/recipes/sphinx.rb",
@@ -47,6 +48,7 @@ Gem::Specification.new do |s|
      "lib/railslove/sprinkle/image_magick.rb",
      "lib/railslove/sprinkle/memcache.rb",
      "lib/railslove/sprinkle/monit.rb",
+     "lib/railslove/sprinkle/munin.rb",
      "lib/railslove/sprinkle/mysql.rb",
      "lib/railslove/sprinkle/nginx.rb",
      "lib/railslove/sprinkle/passenger.rb",
@@ -69,6 +71,7 @@ Gem::Specification.new do |s|
      "lib/railslove/templates/monitoring/sphinx.monit.erb",
      "lib/railslove/templates/monitoring/sshd.monit.erb",
      "lib/railslove/templates/monitrc.erb",
+     "lib/railslove/templates/munin-node.conf.erb",
      "lib/railslove/templates/nginx.conf",
      "lib/railslove/templates/nginx_init",
      "lib/railslove/templates/passenger.conf",
