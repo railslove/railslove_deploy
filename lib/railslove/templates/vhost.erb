@@ -6,9 +6,9 @@
 	DocumentRoot /var/www/rails_apps/<%= application %>/current/public
 
 	<directory "/var/www/rails_apps/<%= application %>/current/public">
-	  AllowOverride all              # <-- relax Apache security settings
-    Options -MultiViews            # <-- MultiViews must be turned off
-		Options FollowSymLinks
+    AllowOverride all
+    Options -MultiViews
+    Options FollowSymLinks
 	</directory>
 	RailsEnv <%= fetch(:rails_env, "production") %>
 	LogLevel warn
