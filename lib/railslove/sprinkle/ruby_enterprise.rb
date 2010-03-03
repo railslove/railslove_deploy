@@ -32,5 +32,5 @@ package :ruby_enterprise, :provides => :ruby do
 end
 
 package :ree_dependencies do 
-  apt %w(libopenssl-ruby zlib1g-dev libreadline5-dev libssl-dev)
+  apt %w(libopenssl-ruby zlib1g-dev libreadline5-dev libssl-dev libxml-ruby)
 end
