@@ -2,12 +2,12 @@ namespace :thinking_sphinx do
   
   desc "Configure Thinkig Sphinx"
   task :config, :roles => :app do 
-    run "cd #{current_path}; rake ts:config RAILS_ENV=#{fetch(:rails_env, "production")}"
+    run "cd #{release_path}; rake ts:config RAILS_ENV=#{fetch(:rails_env, "production")}"
   end
   
   desc "Start Thinkig Sphinx"
   task :start, :roles => :app do 
-    run "cd #{current_path}; rake ts:start RAILS_ENV=#{fetch(:rails_env, "production")}"    
+    run "cd #{release_path}; rake ts:start RAILS_ENV=#{fetch(:rails_env, "production")}"    
   end
   
   desc "Stop Thinkig Sphinx"
@@ -17,15 +17,15 @@ namespace :thinking_sphinx do
   
   desc "Run Thinkig Sphinx indexing"
   task :index, :roles => :app do 
-    run "cd #{current_path}; rake ts:index RAILS_ENV=#{fetch(:rails_env, "production")}"
+    run "cd #{release_path}; rake ts:index RAILS_ENV=#{fetch(:rails_env, "production")}"
   end
   
   desc "Bootstrap Thinkig Sphinx"
   task :bootstrap, :roles => :app do 
-    run "cd #{current_path}; rake ts:stop RAILS_ENV=#{fetch(:rails_env, "production")}"
-    run "cd #{current_path}; rake ts:config RAILS_ENV=#{fetch(:rails_env, "production")}"
-    run "cd #{current_path}; rake ts:index RAILS_ENV=#{fetch(:rails_env, "production")}"
-    run "cd #{current_path}; rake ts:start RAILS_ENV=#{fetch(:rails_env, "production")}"
+    run "cd #{release_path}; rake ts:stop RAILS_ENV=#{fetch(:rails_env, "production")}"
+    run "cd #{release_path}; rake ts:config RAILS_ENV=#{fetch(:rails_env, "production")}"
+    run "cd #{release_path}; rake ts:index RAILS_ENV=#{fetch(:rails_env, "production")}"
+    run "cd #{release_path}; rake ts:start RAILS_ENV=#{fetch(:rails_env, "production")}"
   end
   
   desc "Symlink Sphinx index DB"
