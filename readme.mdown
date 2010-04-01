@@ -36,11 +36,11 @@ This generates the default capistrano files (Capfile and config/deploy.rb) and a
 * vhost.erb - the template to generate your apache vhost config file
 * ferm.conf.erb  - the ferm (http://ferm.foo-projects.org/) to configure IP tables
 
-### Adjust your config/deploy.rb file
+### 2. Adjust your config/deploy.rb file
 
 Adjust the deploy file for your needs. Enter the IPs of your Server, configure your callbacks, etc.
 
-### Adjust your config/server/policy.rb file 
+### 3. Adjust your config/server/policy.rb file 
 
 The policy file describes how your server should look like. Here you can configure the packages you want to install. 
 
@@ -70,14 +70,14 @@ The default policy installs the following:
       requires :munin_apache_status # configure extended apache status information
     end
     
-### use the sprinkle command to run your policy and setup your server
+### 4. use the sprinkle command to run your policy and setup your server
 
     sprinkle - s config/server/policy.rb
 
 Now sprinkle parses your policy and load the recipes and installs it on the server. After that you're server is ready to deploy. 
 
-### cap deploy:setup
-### cap deploy:cold
+### 5. cap deploy:setup
+### 6. cap deploy:cold
 
 You're done. :D
 
