@@ -20,6 +20,7 @@ package :ruby_enterprise, :provides => :ruby do
     
     #reload /etc/profile 
     post :install, "source /etc/profile"
+    post :install, "gem update --system"
     post :install, "gem sources -a http://gems.github.com"
   end
   
