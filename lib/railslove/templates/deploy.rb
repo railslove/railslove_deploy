@@ -83,7 +83,9 @@ set :use_sudo, false
 # symlinks <release>/config/myconfig.rb to <shared>/config/myconfig.rb and
 
 
-set :shared_files, {}
+set :shared_files, {
+  ".bundle" => ".bundle"
+}
 
 
 #############################################################################
@@ -180,7 +182,7 @@ after "deploy:setup",
   "logrotate:configure",
   "apache:upload_vhost_config",
   "db:upload_config_yml",
-  "gems:install"
+  "gems:install", # you probably don't need this if you're using bundler
   "shared:setup"
   
 after "deploy:cold",
@@ -192,3 +194,6 @@ after "deploy:finalize_update",
   "db:create",
   "shared:symlink",
   "deploy:cleanup"
+
+# are you using bundler?
+#after "deploy:update_code", "deploy:bundle_install"
