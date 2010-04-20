@@ -83,6 +83,17 @@ You're done. :D
 
 
 
+# Notes
+
+## not included packages
+
+### curl/libcurl
+
+to install libcurl try: 
+apt-get install libcurl4-openssl-dev
+If apt-get fails to install libcurl4-openssl-dev, try libcurl-dev, libcurl4-gnutls-dev, or libcurl3-gnutls-dev. 
+
+
 ## Issues
 
 * Sprinkle does not have any rollback function if something fails.
