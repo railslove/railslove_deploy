@@ -2,3 +2,4 @@
 .DS_Store
 coverage
 pkg/
+railslove_deploy.gemspec
