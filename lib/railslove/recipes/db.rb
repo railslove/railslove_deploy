@@ -13,7 +13,12 @@ namespace :db do
   task :stop, :roles => :db do
     sudo "/etc/init.d/mysql stop"
   end
-
+  
+  desc "run the rake db:seed task to load seed data"
+  task :seed, :roles => :db do
+    rake("db:seed")
+  end
+  
   desc "Export MySQL database"
   task :export, :roles => :db do
     database = Capistrano::CLI.ui.ask("Which database should we export: ")
