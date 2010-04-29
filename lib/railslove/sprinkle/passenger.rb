@@ -25,7 +25,7 @@ package :passenger_apache, :provides => :appserver do
   end
   
   verify do
-    has_file '/usr/local/ruby-enterprise/lib/ruby/gems/1.8/gems/passenger-2.2.11/ext/apache2/mod_passenger.so'
+    has_file "/usr/local/ruby-enterprise/lib/ruby/gems/1.8/gems/passenger-#{passenger_version}/ext/apache2/mod_passenger.so"
   end
 end
 

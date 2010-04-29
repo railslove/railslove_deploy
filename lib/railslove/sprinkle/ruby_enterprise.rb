@@ -12,11 +12,11 @@ package :ruby_enterprise, :provides => :ruby do
     ["","#Adding rubyenterprise as path",
     "PATH=$PATH:#{install_path}/bin",
     "export PATH"].each do |line|
-      post :install, "echo '#{line}' |sudo tee -a /etc/profile"
+      post :install, "echo '#{line}' | tee -a /etc/profile"
     end
     
     #TODO: figure out how setting the ruby-enterprise dir in PATH variable for sudo
-    post :install, "ln -s /usr/local/ruby-enterprise/bin/* /usr/local/bin/"
+    #post :install, "ln -s /usr/local/ruby-enterprise/bin/* /usr/local/bin/"
     
     #reload /etc/profile 
     post :install, "source /etc/profile"
