@@ -18,7 +18,7 @@ table filter {
         interface lo ACCEPT;
 
         # respond to ping, but limit that
-        proto icmp ACCEPT; 
+        proto icmp ACCEPT;
 
         # allow IPsec
         proto udp dport 500 ACCEPT;
@@ -27,6 +27,9 @@ table filter {
         # allow the defined tcp connections
         #proto tcp dport ssh ACCEPT;
 				proto tcp dport $SERVER_TCP_PORTS ACCEPT;
+
+				# if you want use munin - add this policy here and customize your ip addresses
+				# saddr (123.456.789.101 123.456.789.101 123.456.789.101 123.456.789.101) proto tcp dport 4949 ACCEPT;
     }
     chain OUTPUT {
         policy ACCEPT;
@@ -44,13 +47,13 @@ table filter {
     }
 }
 
+# Drop policy for ipv6
 # IPv6:
-#domain ip6 {
-#    table filter {
-#        chain INPUT {
-#            policy ACCEPT;
-#            # ...
-#        }
-#        # ...
-#    }
-#}
+domain ip6 {
+    table filter {
+        chain INPUT {
+            policy DROP;
+	    interface lo ACCEPT;
+        }
+    }
+}
