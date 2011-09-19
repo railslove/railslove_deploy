@@ -16,7 +16,7 @@ namespace :db do
   
   desc "run the rake db:seed task to load seed data"
   task :seed, :roles => :db do
-    rake("db:seed")
+    run_rake("db:seed")
   end
   
   desc "Export MySQL database"
@@ -27,7 +27,7 @@ namespace :db do
 
   desc "run the rake db:create task for the specific environment"
   task :create, :roles => :db, :only => { :primary => true } do
-    rake("db:create")
+    run_rake("db:create")
   end
   
   desc "Upload the database yml from the /config/database.yml"
