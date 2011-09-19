@@ -1,5 +1,5 @@
 # run a rake task
-def rake(task, args={})
+def run_rake(task, args={})
   rails_env = args[:rails_env] || fetch(:rails_env, "production")
   rake_env = args[:rake_env] || fetch(:rake_env, "")
   rake = fetch(:rake, "rake")
