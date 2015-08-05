@@ -11,7 +11,7 @@ There is no nice documentation or readme file yet but if you have any problems q
 michael@railslove.com
 skype:derbumi.de
 irc: derbumi on freenode
-titter: @bumi
+twitter: @bumi
 
 
 ## Idea
